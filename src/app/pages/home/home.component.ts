@@ -24,6 +24,20 @@ export class HomeComponent {
       stars: 3,
       username: 'Panchito Perez Gonzales',
     },
+    {
+      content: 'Yo he comprado varios de sus servicios y son de la mas alta calidad!',
+      date: new Date(),
+      id: 1,
+      stars: 5,
+      username: 'Panchito Perez Gonzales',
+    },
+    {
+      content: 'Yo he comprado varios de sus servicios y son de la mas alta calidad!',
+      date: new Date(),
+      id: 1,
+      stars: 3,
+      username: 'Panchito Perez Gonzales',
+    },
   ];
 
 
