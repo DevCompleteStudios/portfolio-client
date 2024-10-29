@@ -4,11 +4,12 @@ import { ComentsService } from '../../services/coments.service';
 import { LoadingComponent } from "../loading/loading.component";
 import { ViewElementDirective } from '../../directives/view-element.directive';
 import { finalize } from 'rxjs';
+import { ShowErrorsComponent } from "../show-errors/show-errors.component";
 
 @Component({
   selector: 'app-view-coments',
   standalone: true,
-  imports: [LoadingComponent, ViewElementDirective],
+  imports: [LoadingComponent, ViewElementDirective, ShowErrorsComponent],
   templateUrl: './view-coments.component.html',
 })
 export class ViewComentsComponent {
@@ -38,7 +39,7 @@ export class ViewComentsComponent {
       .subscribe({
         next: (data) => this.coments.push(...data.data),
         error: (err) => {
-          console.log('Hubo un error al mostrar los comentarios!');
+          this.err = 'Unexpected error, please contact support';
           console.log(err);
         }
       })

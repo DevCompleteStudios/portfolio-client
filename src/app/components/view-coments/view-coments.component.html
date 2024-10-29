@@ -7,6 +7,10 @@
     <button class="text-white bg-blue-600 transition-all hover:bg-blue-700 rounded-md px-6 py-1 mb-6">Add review</button>
   </div>
 
+  @if (err) {
+    <app-show-errors [err]="err"/>
+  }
+
   @if (!isLoading()) {
     @if (coments.length > 0) {
       <ul class="max-w-3xl mx-auto space-y-6">
