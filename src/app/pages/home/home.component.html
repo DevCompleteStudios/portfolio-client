@@ -1,4 +1,5 @@
 
+
 <section class="text-center mt-32 mb-56 text-white">
   <h1 class="lg:text-7xl md:text-6xl text-5xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
     DevComplete Studios
@@ -9,102 +10,7 @@
 </section>
 
 
-<main class="p-6 md:p-8">
-  <h2 class="text-4xl font-bold text-center mb-8 text-white/90 tracking-tight">
-    What Our Customers Say
-  </h2>
+<app-about-me/>
+<app-contact-me/>
+<app-view-coments/>
 
-  <div class="flex justify-center">
-    <button class="text-white bg-blue-600 transition-all hover:bg-blue-700 rounded-md px-6 py-1 mb-6">Add review</button>
-  </div>
-
-  <ul class="max-w-3xl mx-auto space-y-6">
-    @for (coment of coments; track $index) {
-      <li class="bg-zinc-900/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div>
-              <h3 class="text-lg font-medium text-white/90">
-                {{coment.username}}
-              </h3>
-              <div class="flex items-center gap-1 text-amber-400">
-                @for (star of getStars; track $index) {
-                  @if (checkStar(coment, $index)) {
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 inline" viewBox="0 0 24 24">
-                      <path d="M12 .587l3.668 7.428 8.2 1.191-5.932 5.744 1.4 8.162L12 18.896l-7.336 3.867 1.4-8.162L.268 9.206l8.2-1.191L12 .587z"/>
-                    </svg>
-                  }@else {
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="gray" class="w-5 h-5 inline" viewBox="0 0 24 24">
-                      <path d="M12 .587l3.668 7.428 8.2 1.191-5.932 5.744 1.4 8.162L12 18.896l-7.336 3.867 1.4-8.162L.268 9.206l8.2-1.191L12 .587z"/>
-                    </svg>
-                  }
-                }
-              </div>
-            </div>
-          </div>
-          <span class="text-sm text-zinc-400">
-            {{ coment.date.toLocaleDateString() }}
-          </span>
-        </div>
-        <p class="mt-4 text-zinc-300 leading-relaxed">
-          {{coment.content}}
-        </p>
-      </li>
-    }
-  </ul>
-</main>
-
-<section class="max-w-4xl mx-auto pt-24 mb-36 px-6">
-  <!-- Section Title -->
-  <h2 class="text-4xl font-bold text-center mb-6 text-white/90 tracking-tight">
-    About Me
-  </h2>
-
-  <div class="text-lg text-zinc-300 space-y-6 mb-16">
-    <p class="leading-relaxed">
-      At DevComplete Studios, we undertake projects across all programming domains, from web development and AI automation to game development on platforms like Roblox.
-    </p>
-    <p class="leading-relaxed">
-      We are passionate about improvement and delivering the highest quality projects for our clients, always providing exceptional service.
-    </p>
-  </div>
-
-  <div class="relative p-8 rounded-2xl bg-zinc-900/50 backdrop-blur-sm border border-gradient">
-    <svg class="absolute -top-6 left-8 w-12 h-12 text-blue-500/80" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/>
-    </svg>
-
-    <!-- Quote -->
-    <div class="text-center">
-      <blockquote class="text-2xl font-medium text-white/90 italic">
-        "Success is not about avoiding failure, but never giving up in the face of it."
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<section class="text-white mb-12">
-  <h2 class="text-center text-3xl font-bold my-4">Contact me</h2>
-
-  <form class="max-w-lg px-8 mx-auto flex flex-col gap-4">
-    <div class="flex flex-col gap-1">
-      <label for="name">Full Name</label>
-      <input
-        type="text"
-        id="name"
-        placeholder="Your name"
-        class="bg-black border border-gray-400 px-2 py-1 rounded-sm"
-      >
-    </div>
-    <div class="flex flex-col gap-1">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Your email"
-        class="bg-black border border-gray-400 px-2 py-1 rounded-sm"
-      >
-    </div>
-  </form>
-
-</section>
