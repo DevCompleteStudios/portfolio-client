@@ -9,10 +9,11 @@ import { Component, Input } from '@angular/core';
 export class ShowErrorsComponent {
 
   @Input({required: true})
-  err!: string | string[];
+  err?: string | string[];
 
 
   protected get getErrors():string[]{
+    if( !this.err ) return [];
     if( typeof this.err === 'string' ){
       return [this.err];
     }

@@ -41,7 +41,7 @@ export class ComentsService {
   }
 
   private addComents(newComents: IComent[]){
-    this.coments.set([...this.coments(), ...newComents]);
+    this.coments.set([...newComents, ...this.coments()]);
   }
 
 }

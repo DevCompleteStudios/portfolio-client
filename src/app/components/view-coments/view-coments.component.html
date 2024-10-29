@@ -3,59 +3,16 @@
     What Our Customers Say
   </h2>
 
-  <div class="flex flex-col my-4 text-white">
-    <h3 class="text-center text-blue-500 font-bold mb-8 text-3xl">Add Comment</h3>
-
-    <form class="p-3 gap-3 flex flex-col max-w-lg w-full mx-auto">
-      <div class="flex flex-col gap-1 w-full">
-        <input type="text" placeholder="Your name" class="border bg-black rounded-md p-2 focus:outline-none focus:border-blue-500">
-      </div>
-
-      <div class="flex flex-col gap-1 w-full">
-        <input type="email" placeholder="Your email" class="border bg-black rounded-md p-2 focus:outline-none focus:border-blue-500">
-      </div>
-
-      <div class="flex flex-col gap-1 w-full">
-        <textarea
-          placeholder="Coment"
-          class="border bg-black rounded-md p-2 focus:outline-none focus:border-blue-500"
-          name="message" id="message"
-        ></textarea>
-      </div>
-
-      <div class="flex flex-row justify-center gap-1 w-full">
-        <input type="radio" name="rating" value="1" id="star1" class="hidden">
-        <label for="star1" class="text-yellow-500 cursor-pointer">⭐</label>
-
-        <input type="radio" name="rating" value="2" id="star2" class="hidden">
-
-        <label for="star2" class="text-yellow-500 cursor-pointer">⭐</label>
-        <input type="radio" name="rating" value="3" id="star3" class="hidden">
-
-        <label for="star3" class="text-yellow-500 cursor-pointer">⭐</label>
-        <input type="radio" name="rating" value="4" id="star4" class="hidden">
-
-        <label for="star4" class="text-yellow-500 cursor-pointer">⭐</label>
-        <input type="radio" name="rating" value="5" id="star5" class="hidden">
-
-        <label for="star5" class="text-yellow-500 cursor-pointer">⭐</label>
-      </div>
-
-      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md font-semibold hover:bg-blue-600">
-        Submit
-      </button>
-    </form>
-  </div>
-
+  <app-add-coment/>
 
   @if (err) {
     <app-show-errors [err]="err"/>
   }
 
   @if (!isLoading()) {
-    @if (coments.length > 0) {
+    @if (findAllComents.length > 0) {
       <ul class="max-w-3xl mx-auto space-y-6">
-        @for (coment of coments; track $index) {
+        @for (coment of findAllComents; track $index) {
           <li class="bg-zinc-900/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">

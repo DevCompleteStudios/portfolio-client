@@ -5,16 +5,16 @@ import { LoadingComponent } from "../loading/loading.component";
 import { ViewElementDirective } from '../../directives/view-element.directive';
 import { finalize } from 'rxjs';
 import { ShowErrorsComponent } from "../show-errors/show-errors.component";
+import { AddComentComponent } from "../add-coment/add-coment.component";
 
 @Component({
   selector: 'app-view-coments',
   standalone: true,
-  imports: [LoadingComponent, ViewElementDirective, ShowErrorsComponent],
+  imports: [LoadingComponent, ViewElementDirective, ShowErrorsComponent, AddComentComponent],
   templateUrl: './view-coments.component.html',
 })
 export class ViewComentsComponent {
 
-  protected coments: IComent[] = [];
   protected isLoading = signal(true);
   protected err?: string | string[];
 
@@ -37,12 +37,15 @@ export class ViewComentsComponent {
         finalize( () => this.isLoading.set(false))
       )
       .subscribe({
-        next: (data) => this.coments.push(...data.data),
         error: (err) => {
           this.err = 'Unexpected error, please contact support';
           console.log(err);
         }
       })
+  }
+
+  protected get findAllComents():IComent[] {
+    return this.comentService.getComents;
   }
 
   protected formatDate(date: any){
