@@ -11,7 +11,7 @@ import { IAddComent } from './interfaces/IAddComent';
 export class ComentsService {
 
   private coments = signal<IComent[]>([]);
-  private url: string = `https://localhost:3000/api/coments`;
+  private url: string = `http://localhost:3000/api/coments`;
   private page = 0;
   private elementsByPage = 10;
 
@@ -33,7 +33,7 @@ export class ComentsService {
   }
 
   public getMoreComents(): Observable<IResponse<IComent[]>> {
-    return this.http.get<IResponse<IComent[]>>(`${this.url}/?page=${this.page}&elements=${this.elementsByPage}`)
+    return this.http.get<IResponse<IComent[]>>(`${this.url}/find-all?page=${this.page}&elements=${this.elementsByPage}`)
       .pipe(
         tap( data => this.addComents(data.data) ),
         tap( () => this.page++ )
