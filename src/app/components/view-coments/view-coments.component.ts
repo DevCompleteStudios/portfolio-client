@@ -32,16 +32,18 @@ export class ViewComentsComponent {
   }
 
   onViewComents(){
+    this.isLoading.set(true);
+
     this.comentService.getMoreComents()
-      .pipe(
-        finalize( () => this.isLoading.set(false))
-      )
-      .subscribe({
-        error: (err) => {
-          this.err = 'Unexpected error, please contact support';
-          console.log(err);
-        }
-      })
+    .pipe(
+      finalize( () => this.isLoading.set(false))
+    )
+    .subscribe({
+      error: (err) => {
+        this.err = 'Unexpected error, please contact support';
+        console.log(err);
+      }
+    });
   }
 
   protected get findAllComents():IComent[] {

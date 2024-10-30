@@ -9,46 +9,51 @@
     <app-show-errors [err]="err"/>
   }
 
-  @if (!isLoading()) {
-    @if (findAllComents.length > 0) {
-      <ul class="max-w-3xl mx-auto space-y-6">
-        @for (coment of findAllComents; track $index) {
-          <li class="bg-zinc-900/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <div>
-                  <h3 class="text-lg font-medium text-white/90">
-                    {{coment.username}}
-                  </h3>
-                  <div class="flex items-center gap-1 text-amber-400">
-                    @for (star of getStars; track $index) {
-                      @if (checkStar(coment, $index)) {
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 inline" viewBox="0 0 24 24">
-                          <path d="M12 .587l3.668 7.428 8.2 1.191-5.932 5.744 1.4 8.162L12 18.896l-7.336 3.867 1.4-8.162L.268 9.206l8.2-1.191L12 .587z"/>
-                        </svg>
-                      }@else {
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="gray" class="w-5 h-5 inline" viewBox="0 0 24 24">
-                          <path d="M12 .587l3.668 7.428 8.2 1.191-5.932 5.744 1.4 8.162L12 18.896l-7.336 3.867 1.4-8.162L.268 9.206l8.2-1.191L12 .587z"/>
-                        </svg>
-                      }
+  @if (findAllComents.length > 0) {
+    <ul class="max-w-3xl mx-auto space-y-6">
+      @for (coment of findAllComents; track $index) {
+        <li class="bg-zinc-900/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all">
+          @if ($index === findAllComents.length - 1) {
+            <div appVisible (visible)="onViewComents()"></div>
+          }
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div>
+                <h3 class="text-lg font-medium text-white/90">
+                  {{coment.username}}
+                </h3>
+                <div class="flex items-center gap-1 text-amber-400">
+                  @for (star of getStars; track $index) {
+                    @if (checkStar(coment, $index)) {
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 inline" viewBox="0 0 24 24">
+                        <path d="M12 .587l3.668 7.428 8.2 1.191-5.932 5.744 1.4 8.162L12 18.896l-7.336 3.867 1.4-8.162L.268 9.206l8.2-1.191L12 .587z"/>
+                      </svg>
+                    }@else {
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="gray" class="w-5 h-5 inline" viewBox="0 0 24 24">
+                        <path d="M12 .587l3.668 7.428 8.2 1.191-5.932 5.744 1.4 8.162L12 18.896l-7.336 3.867 1.4-8.162L.268 9.206l8.2-1.191L12 .587z"/>
+                      </svg>
                     }
-                  </div>
+                  }
                 </div>
               </div>
-              <span class="text-sm text-zinc-400">
-                {{ formatDate(coment.date) }}
-              </span>
             </div>
-            <p class="mt-4 text-zinc-300 leading-relaxed">
-              {{coment.content}}
-            </p>
-          </li>
-        }
-      </ul>
-    }@else {
-      <h2 class="text-center text-indigo-400 my-20 text-2xl">Add a comment saying what you think about us</h2>
-    }
+            <span class="text-sm text-zinc-400">
+              {{ formatDate(coment.date) }}
+            </span>
+          </div>
+          <p class="mt-4 text-zinc-300 leading-relaxed">
+            {{coment.content}}
+          </p>
+        </li>
+      }
+    </ul>
   }@else {
+    <h2 class="text-center text-indigo-400 my-20 text-2xl">Add a comment saying what you think about us</h2>
+  }
+
+  @if (isLoading()) {
     <app-loading/>
   }
+
 </main>
