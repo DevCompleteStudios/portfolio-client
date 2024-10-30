@@ -11,7 +11,7 @@ import { IAddComent } from './interfaces/IAddComent';
 export class ComentsService {
 
   private coments = signal<IComent[]>([]);
-  private url: string = `http://localhost:3000/api/coments`;
+  private url: string = `https://truthful-learning-production.up.railway.app/api/coments`;
   private page = 0;
   private elementsByPage = 10;
 
