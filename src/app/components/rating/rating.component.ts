@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
 })
 export class RatingComponent {
 
-  protected discordUrl:string = '';
-  protected youtubeUrl: string = '';
-  protected instagramUrl:string = '';
+  protected discordUrl:string = 'https://discord.gg/xDCakmb24Y';
+  protected youtubeUrl: string = 'https://www.youtube.com/@DevCompleteStudios';
+  protected instagramUrl:string = 'https://www.instagram.com/yael_hs5/#';
 
 }
