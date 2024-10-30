@@ -24,7 +24,7 @@ export class ComentsService {
   public addComent( coment: IAddComent ):Observable<IResponse<IComent>> {
     return this.http.post<IResponse<IComent>>(`${this.url}/add-coment`, coment)
       .pipe(
-        tap( res => this.addComents([res.data]) )
+        tap( res => this.addComents([res.data], true) )
       );
   }
 
@@ -35,13 +35,17 @@ export class ComentsService {
   public getMoreComents(): Observable<IResponse<IComent[]>> {
     return this.http.get<IResponse<IComent[]>>(`${this.url}/find-all?page=${this.page}&elements=${this.elementsByPage}`)
       .pipe(
-        tap( data => this.addComents(data.data) ),
+        tap( data => this.addComents(data.data, false) ),
         tap( () => this.page++ )
       );
   }
 
-  private addComents(newComents: IComent[]){
-    this.coments.set([...newComents, ...this.coments()]);
+  private addComents(newComents: IComent[], first: boolean = false){
+    if(first){
+      this.coments.set([...newComents, ...this.coments()]);
+    } else {
+      this.coments.set([...this.coments(), ...newComents]);
+    }
   }
 
 }
